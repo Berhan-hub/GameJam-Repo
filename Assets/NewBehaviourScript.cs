@@ -15,6 +15,6 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         [SerializeField] float speed = 3.0f;
+        
     }
 }
