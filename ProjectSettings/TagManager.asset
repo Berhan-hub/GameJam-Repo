@@ -6,6 +6,7 @@ TagManager:
   tags:
   - parcaciklar
   - esyalar
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -34,5 +34,15 @@ public class PlayerController : MonoBehaviour
     {
         // Oyuncunun fiziksel hareketi
         rb.velocity = movement * moveSpeed;
+
+        // Kamerayı takip etmek için kamera scriptini bulma
+        CameraFollow cameraFollow = Camera.main.GetComponent<CameraFollow>();
+
+        // Eğer kamera scripti bulunduysa ve scriptin "target" değişkeni boş değilse
+        if (cameraFollow != null && cameraFollow.target != null)
+        {
+            // Kameranın takip ettiği hedefi oyuncu olarak ayarlama
+            cameraFollow.target = transform;
+        }
     }
 }
