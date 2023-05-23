@@ -7,10 +7,11 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f; // Oyuncu hareket hızı
 
     private Rigidbody2D rb;
-    private Animator animator;
+    public Animator animator;
 
     private Vector2 movement;
     private GameObject sword; // Child obje referansı
+   
 
     private void Start()
     {
@@ -28,8 +29,9 @@ public class PlayerController : MonoBehaviour
         movement = new Vector2(moveX, moveY);
 
         // Oyuncunun animasyon kontrolü
-        // animator.SetFloat("MoveX", moveX);
-        // animator.SetFloat("MoveY", moveY);
+        animator.SetFloat("Horizontal", moveY);
+        animator.SetFloat("Vertical", moveX);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
 
         // Child objenin collider'ını döndürme
         RotateChildCollider();
