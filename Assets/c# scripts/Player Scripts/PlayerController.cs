@@ -10,11 +10,13 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
 
     private Vector2 movement;
+    private GameObject sword; // Child obje referansı
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        sword = transform.GetChild(0).gameObject; // İlk child objeyi alıyoruz
     }
 
     private void Update()
@@ -28,6 +30,9 @@ public class PlayerController : MonoBehaviour
         // Oyuncunun animasyon kontrolü
         animator.SetFloat("MoveX", moveX);
         animator.SetFloat("MoveY", moveY);
+
+        // Child objenin collider'ını döndürme
+        RotateChildCollider();
     }
 
     private void FixedUpdate()
@@ -44,5 +49,14 @@ public class PlayerController : MonoBehaviour
             // Kameranın takip ettiği hedefi oyuncu olarak ayarlama
             cameraFollow.target = transform;
         }
+    }
+
+    private void RotateChildCollider()
+    {
+        // Child objenin dönme açısını hesaplamak için hareket yönünü alın
+        float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
+
+        // Child objenin dönme açısını ayarlayın
+        sword.transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
 }
