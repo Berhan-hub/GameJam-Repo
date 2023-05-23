@@ -28,8 +28,8 @@ public class PlayerController : MonoBehaviour
         movement = new Vector2(moveX, moveY);
 
         // Oyuncunun animasyon kontrolü
-        animator.SetFloat("MoveX", moveX);
-        animator.SetFloat("MoveY", moveY);
+        // animator.SetFloat("MoveX", moveX);
+        // animator.SetFloat("MoveY", moveY);
 
         // Child objenin collider'ını döndürme
         RotateChildCollider();
