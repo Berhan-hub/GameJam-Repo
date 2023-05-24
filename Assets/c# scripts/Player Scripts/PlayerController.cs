@@ -29,12 +29,25 @@ public class PlayerController : MonoBehaviour
         movement = new Vector2(moveX, moveY);
 
         // Oyuncunun animasyon kontrolü
-        animator.SetFloat("Horizontal", moveY);
-        animator.SetFloat("Vertical", moveX);
+        if(moveX != 0 || moveY != 0)
+        {
+            animator.SetFloat("Horizontal", moveX);
+            animator.SetFloat("Vertical", moveY);
+        }
+      
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
         // Child objenin collider'ını döndürme
         RotateChildCollider();
+        // Animasyonlar için bool tespiti
+        if (moveX != 0 || moveY != 0)
+        {
+            animator.SetBool("IsRunning", true);
+        }
+        else
+        {
+            animator.SetBool("IsRunning", false);
+        }
     }
 
     private void FixedUpdate()
