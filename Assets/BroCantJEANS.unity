@@ -38775,6 +38775,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2.7
   animator: {fileID: 959545259}
+  sword: {fileID: 1851624927}
 --- !u!50 &959545256
 Rigidbody2D:
   serializedVersion: 4
@@ -38858,7 +38859,7 @@ Animator:
   m_GameObject: {fileID: 959545253}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 13bf011aa87196f4298aebce2c84b22c, type: 2}
+  m_Controller: {fileID: 9100000, guid: 22e8137a8c97d4dbcb14bc64fd24ba95, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -64447,7 +64448,7 @@ GameObject:
   - component: {fileID: 1585694162}
   - component: {fileID: 1585694167}
   m_Layer: 0
-  m_Name: MC-bROcant (1)
+  m_Name: Enemies
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64517,6 +64518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   animator: {fileID: 0}
+  sword: {fileID: 0}
 --- !u!50 &1585694165
 Rigidbody2D:
   serializedVersion: 4

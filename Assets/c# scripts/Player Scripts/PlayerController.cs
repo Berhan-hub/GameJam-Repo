@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
 
     private Vector2 movement;
-    private GameObject sword; // Child obje referansı
+    public GameObject sword; // Child obje referansı
    
 
     private void Start()
