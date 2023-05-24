@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 movement;
     public GameObject sword; // Child obje referansı
+    public Transform childTransform; // Child obje transform referansı
    
 
     private void Start()
@@ -37,8 +38,12 @@ public class PlayerController : MonoBehaviour
       
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
-        // Child objenin collider'ını döndürme
-        RotateChildCollider();
+        // Hiyerarşik çocuğun dönüşünü ayarla
+        float rotationAngle = Mathf.Atan2(moveY, moveX) * Mathf.Rad2Deg;
+        childTransform.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
+
+        childTransform.GetComponent<BoxCollider2D>().transform.rotation = Quaternion.Euler(0f, 0f, -rotationAngle);
+
         // Animasyonlar için bool tespiti
         if (moveX != 0 || moveY != 0)
         {
@@ -66,12 +71,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void RotateChildCollider()
-    {
-        // Child objenin dönme açısını hesaplamak için hareket yönünü alın
-        float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
-
-        // Child objenin dönme açısını ayarlayın
-        sword.transform.rotation = Quaternion.Euler(0f, 0f, angle);
-    }
+    // private void RotateChildCollider()
+    // {
+    //     // Hiyerarşik çocuğun dönüşünü ayarla
+    //     float rotationAngle = Mathf.Atan2(moveY, moveX) * Mathf.Rad2Deg;
+    //     childTransform.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
+    // }
 }
