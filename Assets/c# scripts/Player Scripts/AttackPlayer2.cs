@@ -10,41 +10,16 @@ public class AttackPlayer2 : MonoBehaviour
     public GameObject swordRight;
 
     private bool attacking = false;
+    private GameObject activeSword = null;
 
     private float timeToAttack = 0.25f;
     private float timer = 0f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        // swordDown = transform.Find("Sword Down").gameObject;
-        // swordUp = transform.Find("Sword Up").gameObject;
-        // swordLeft = transform.Find("Sword Left").gameObject;
-        // swordRight = transform.Find("Sword Right").gameObject;
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Attack();
-        }
-        else if (Input.GetKeyDown(KeyCode.D) && Input.GetKeyDown(KeyCode.Space))
-        {
-            ActivateSword(swordRight);
-        }
-        else if (Input.GetKeyDown(KeyCode.A) && Input.GetKeyDown(KeyCode.Space))
-        {
-            ActivateSword(swordLeft);
-        }
-        else if (Input.GetKeyDown(KeyCode.S) && Input.GetKeyDown(KeyCode.Space))
-        {
-            ActivateSword(swordDown);
-        }
-        else if (Input.GetKeyDown(KeyCode.W) && Input.GetKeyDown(KeyCode.Space))
-        {
-            ActivateSword(swordUp);
         }
 
         if (attacking)
@@ -58,26 +33,48 @@ public class AttackPlayer2 : MonoBehaviour
                 DeactivateAllSwords();
             }
         }
+        else
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                ActivateSword(swordUp);
+            }
+            else if (Input.GetKey(KeyCode.A))
+            {
+                ActivateSword(swordLeft);
+            }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                ActivateSword(swordDown);
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+                ActivateSword(swordRight);
+            }
+        }
     }
 
     private void Attack()
     {
-        attacking = true;
-        // Activate the default sword for attack
-        ActivateSword(swordDown);
+        if (activeSword != null)
+        {
+            attacking = true;
+            activeSword.SetActive(true);
+        }
     }
 
     private void ActivateSword(GameObject sword)
     {
         DeactivateAllSwords();
-        sword.SetActive(true);
+        activeSword = sword;
     }
 
     private void DeactivateAllSwords()
     {
-        swordDown.SetActive(false);
-        swordUp.SetActive(false);
-        swordLeft.SetActive(false);
-        swordRight.SetActive(false);
+        if (activeSword != null)
+        {
+            activeSword.SetActive(false);
+            activeSword = null;
+        }
     }
 }
