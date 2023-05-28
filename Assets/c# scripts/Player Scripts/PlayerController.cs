@@ -39,10 +39,10 @@ public class PlayerController : MonoBehaviour
         animator.SetFloat("Speed", movement.sqrMagnitude);
 
         // Hiyerarşik çocuğun dönüşünü ayarla
-        float rotationAngle = Mathf.Atan2(moveY, moveX) * Mathf.Rad2Deg;
-        childTransform.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
+        // float rotationAngle = Mathf.Atan2(moveY, moveX) * Mathf.Rad2Deg;
+        // childTransform.rotation = Quaternion.Euler(0f, 0f, rotationAngle);
 
-        childTransform.GetComponent<BoxCollider2D>().transform.rotation = Quaternion.Euler(0f, 0f, -rotationAngle);
+        // childTransform.GetComponent<BoxCollider2D>().transform.rotation = Quaternion.Euler(0f, 0f, -rotationAngle);
 
         // Animasyonlar için bool tespiti
         if (moveX != 0 || moveY != 0)
